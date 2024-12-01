@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendrier de l'Avent BOTM</title>
+    <style>
+        body {
+            font-family: "Special Elite", serif;
+            text-align: center;
+            background-image: url('https://i83.servimg.com/u/f83/19/48/18/17/sans_t19.jpg'); /* Remplacez par l'URL de votre fond */
+      background-size: cover;
+      background-position: center;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 20px;
+            color: #d7263d;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 5px #000;
+        }
+.special-elite-regular {
+  font-family: "Special Elite", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            padding: 30px;
+            max-width: 120%;
+            margin: 50px auto;
+        }
+
+        .day {
+            background: #b73939;
+            color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 1.5em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .day.opened {
+            background: #fff0f0;
+            color: #000;
+            cursor: default;
+        }
+
+        .day img {
+            max-width: 80%;
+            max-height: 80%;
+            display: none;
+        }
+
+        .day.opened img {
+            display: block;
+        }
+
+        .day.locked {
+            background: #548e44;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+<body>
+    <h1>🎄 Calendrier de l'Avent BOTM 🎅🏼</h1>
+    <div class="calendar">
+        <!-- Cases du calendrier -->
+        <div class="day" data-day="1"></div>
+        <div class="day" data-day="2"></div>
+        <div class="day" data-day="3"></div>
+	<div class="day" data-day="4"></div>
+        <div class="day" data-day="5"></div>
+        <div class="day" data-day="6"></div>
+	<div class="day" data-day="7"></div>
+        <div class="day" data-day="8"></div>
+        <div class="day" data-day="9"></div>
+ 	<div class="day" data-day="10"></div>
+ 	<div class="day" data-day="11"></div>
+        <div class="day" data-day="12"></div>
+        <div class="day" data-day="13"></div>
+	<div class="day" data-day="14"></div>
+        <div class="day" data-day="15"></div>
+        <div class="day" data-day="16"></div>
+	<div class="day" data-day="17"></div>
+        <div class="day" data-day="18"></div>
+ 	<div class="day" data-day="19"></div>
+ 	<div class="day" data-day="20"></div>
+ 	<div class="day" data-day="21"></div>
+ 	<div class="day" data-day="22"></div>
+ 	<div class="day" data-day="23"></div>
+        <div class="day" data-day="24"></div>
+    </div>
+    <script>
+        // Configuration des prix pour chaque jour
+        const prizes = {
+            1: ["prize9.jpg", "prize10.jpg", "prize11.jpg", "prize12.jpg", "prize13.jpg", "prize14.jpg", "prize15.jpg", "prize16.jpg"],
+            2: ["prize1.png", "prize2.png", "prize3.png", "prize4.png", "prize5.png", "prize6.png"],
+            3: ["prize1.png", "prize2.png", "prize3.png", "prize4.png", "prize5.png", "prize6.png"],
+	    4: ["prize1.png", "prize2.png", "prize3.png", "prize4.png", "prize5.png", "prize6.png"],
+	    5: ["prize7.png", "prize8.png", "prize6.png", "prize3.png"],
+ 	    6: ["prize1.png", "prize2.png", "prize3.png", "prize4.png", "prize5.png", "prize6.png"],
+            7: ["prize1.png", "prize2.png", "prize3.png", "prize4.png", "prize5.png", "prize6.png"],
+	    8: ["prize1.png", "prize2.png", "prize3.png", "prize4.png", "prize5.png", "prize6.png"],
+	    9: ["prize1.png", "prize2.png", "prize3.png", "prize4.png", "prize5.png", "prize6.png"],
+	    10: ["prize17.jpg", "prize18.jpg", "prize19.jpg", "prize20.jpg", "prize12.jpg", "prize14.jpg", "prize15.jpg", "prize10.jpg"],
+	    11: ["prize1.png", "prize2.png", "prize3.png", "prize4.png", "prize5.png", "prize6.png"],
+            12: ["prize1.png", "prize2.png", "prize3.png", "prize4.png", "prize5.png", "prize6.png"],
+            13: ["prize1.png", "prize2.png", "prize3.png", "prize4.png", "prize5.png", "prize6.png"],
+	    14: ["prize1.png", "prize2.png", "prize3.png", "prize4.png", "prize5.png", "prize6.png"],
+	    15: ["prize10.jpg", "prize15.jpg", "prize20.png", "prize21.png"],
+	    16: ["prize1.png", "prize2.png", "prize3.png", "prize4.png", "prize5.png", "prize6.png"],
+            17: ["prize1.png", "prize2.png", "prize3.png", "prize4.png", "prize5.png", "prize6.png"],
+	    18: ["prize1.png", "prize2.png", "prize3.png", "prize4.png", "prize5.png", "prize6.png"],
+	    19: ["prize1.png", "prize2.png", "prize3.png", "prize4.png", "prize5.png", "prize6.png"],
+	    20: ["prize17.jpg", "prize18.jpg", "prize19.jpg", "prize20.jpg", "prize12.jpg", "prize14.jpg", "prize15.jpg", "prize10.jpg"],
+	    21: ["prize1.png", "prize2.png", "prize3.png", "prize4.png", "prize5.png", "prize6.png"],
+            22: ["prize1.png", "prize2.png", "prize3.png", "prize4.png", "prize5.png", "prize6.png"],
+            23: ["prize1.png", "prize2.png", "prize3.png", "prize4.png", "prize5.png", "prize6.png"],
+            24: ["prize22.png", "prize23.png", "prize24.png","prize25.png", "prize26.png", "prize27.png","prize28.png"]
+        };
+
+        // Fonction pour vérifier si une case est ouvrable
+        const canOpenDay = (day) => {
+            const today = new Date();
+            const currentDay = today.getDate();
+            return day <= currentDay;
+        };
+
+        // Ajout de l'interactivité
+        document.querySelectorAll('.day').forEach(dayElem => {
+            const day = parseInt(dayElem.getAttribute('data-day'));
+            dayElem.textContent = day;
+
+            if (canOpenDay(day)) {
+                dayElem.addEventListener('click', () => {
+                    if (!dayElem.classList.contains('opened')) {
+                        dayElem.classList.add('opened');
+
+                        // Sélection d'un prix au hasard
+                        const prizeImages = prizes[day] || ["default.png"]; // Default si pas d'image
+                        const randomPrize = prizeImages[Math.floor(Math.random() * prizeImages.length)];
+
+                        // Ajout de l'image
+                        const img = document.createElement('img');
+                        img.src = `images/${randomPrize}`;
+                        img.alt = `Prix pour le jour ${day}`;
+                        dayElem.appendChild(img);
+                    }
+                });
+            } else {
+                dayElem.classList.add('locked');
+            }
+        });
+    </script>
+</body>
+</html>
